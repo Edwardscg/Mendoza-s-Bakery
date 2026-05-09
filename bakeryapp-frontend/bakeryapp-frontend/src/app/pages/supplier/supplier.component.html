@@ -1,0 +1,7 @@
+
+<h1>Suppliers</h1>
+<ul>
+  @for (supplier of suppliers; track $index){
+    <li class="elemento">ID: {{supplier.idSupplier}} - Nombre: {{supplier.businessName}} - RUC: {{supplier.ruc}}</li>
+  }
+</ul>
