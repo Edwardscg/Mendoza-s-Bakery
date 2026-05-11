@@ -1,0 +1,7 @@
+
+<h1>Product Categories</h1>
+<ul>
+  @for (category of productCategories; track $index){
+    <li class="elemento">ID: {{category.idCategory}} - Nombre: {{category.nameCategory}} - Descripción: {{category.description}} </li>
+  }
+</ul>

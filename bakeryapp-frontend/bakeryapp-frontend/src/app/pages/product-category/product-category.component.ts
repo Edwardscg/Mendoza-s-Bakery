@@ -1,0 +1,19 @@
+import { Component, inject  } from '@angular/core';
+import { productCategory } from '../../model/productCategory';
+import { ProductCategoryService } from '../../services/productCategory.service';
+
+@Component({
+  selector: 'app-product-category',
+  imports: [],
+  templateUrl: './product-category.component.html',
+  styleUrl: './product-category.component.css',
+})
+export class ProductCategoryComponent {
+  protected productCategories: productCategory[] = [];
+
+  private readonly productCategoryService = inject(ProductCategoryService);
+
+  ngOnInit(): void {
+    this.productCategoryService.findAll().subscribe(data => this.productCategories = data);
+  }
+}
