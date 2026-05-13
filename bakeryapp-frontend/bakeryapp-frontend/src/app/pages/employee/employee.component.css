@@ -1,0 +1,10 @@
+h1{
+  color: blueviolet;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.elemento{
+  color: green;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+}
