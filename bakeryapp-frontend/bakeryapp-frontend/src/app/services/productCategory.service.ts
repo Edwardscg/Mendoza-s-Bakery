@@ -7,11 +7,11 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class ProductCategoryService {
-  
-  private url = `${environment.HOST}/productCategories`;
-  
+
+  private url = `${environment.HOST}/product-categories`;
+
   private readonly http = inject(HttpClient);
-  
+
   // GET, POST, PUT, DELETE
   findAll() {
     return this.http.get<productCategory[]>(this.url);

@@ -14,6 +14,10 @@ export class CustomerComponent {
   private readonly customerService = inject(CustomerService);
 
   ngOnInit(): void {
-    this.customerService.findAll().subscribe(data => this.customers = data)
+    this.customerService.findAll().subscribe((data) => {
+        console.log('Datos recibidos del backend:', data);
+        this.customers = data;
+
+    });
   }
 }

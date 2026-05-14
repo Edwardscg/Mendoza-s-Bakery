@@ -12,8 +12,10 @@ export class ProductCategoryComponent {
   protected productCategories: productCategory[] = [];
 
   private readonly productCategoryService = inject(ProductCategoryService);
-
   ngOnInit(): void {
-    this.productCategoryService.findAll().subscribe(data => this.productCategories = data);
+    this.productCategoryService.findAll().subscribe((data) => {
+        console.log('Datos recibidos del backend:', data);
+        this.productCategories = data;
+    });
   }
 }
