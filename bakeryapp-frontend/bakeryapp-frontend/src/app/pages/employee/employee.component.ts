@@ -14,6 +14,9 @@ export class EmployeeComponent {
   private readonly employeeService = inject(EmployeeService);
 
   ngOnInit(): void {
-    this.employeeService.findAll().subscribe(data => this.employees = data)
+    this.employeeService.findAll().subscribe((data) => {
+        console.log('Datos recibidos del backend:', data);
+        this.employees = data;
+    });
   }
 }
