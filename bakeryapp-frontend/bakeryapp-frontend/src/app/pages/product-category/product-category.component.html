@@ -1,7 +1,12 @@
+<router-outlet></router-outlet>
 
 <h1>Product Categories</h1>
+<button routerLink="new">Nuevo</button>
 <ul>
   @for (category of productCategories; track $index){
-    <li class="elemento">ID: {{category.idCategory}} - Nombre: {{category.nameCategory}} - Descripción: {{category.description}} </li>
+    <li class="elemento">
+      ID: {{category.idCategory}} - Nombre: {{category.nameCategory}} - Descripción: {{category.description}}
+      <button [routerLink]="['edit', category.idCategory]">Editar</button>
+    </li>
   }
 </ul>
