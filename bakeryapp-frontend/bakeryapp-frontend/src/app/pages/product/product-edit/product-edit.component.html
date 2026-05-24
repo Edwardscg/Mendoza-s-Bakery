@@ -4,67 +4,149 @@
     <div hidden>
         <mat-form-field>
             <mat-label>ID</mat-label>
-            <input matInput placeholder="ID" formControlName="id_product">
+
+            <input
+                matInput
+                placeholder="ID"
+                formControlName="idProduct"
+            >
+
         </mat-form-field>
     </div>
 
     <!-- NAME -->
     <mat-form-field>
+
         <mat-label>NAME</mat-label>
-        <input matInput placeholder="Name" formControlName="name">
+
+        <input
+            matInput
+            placeholder="Name"
+            formControlName="name"
+        >
+
     </mat-form-field>
 
     <!-- DESCRIPTION -->
     <mat-form-field>
+
         <mat-label>DESCRIPTION</mat-label>
-        <input matInput placeholder="Description" formControlName="description">
+
+        <input
+            matInput
+            placeholder="Description"
+            formControlName="description"
+        >
+
     </mat-form-field>
 
     <!-- SALE PRICE -->
     <mat-form-field>
+
         <mat-label>SALE PRICE</mat-label>
-        <input matInput placeholder="Sale Price" formControlName="sale_price">
+
+        <input
+            matInput
+            type="number"
+            placeholder="Sale Price"
+            formControlName="salePrice"
+        >
+
     </mat-form-field>
 
     <!-- PRODUCTION COST -->
     <mat-form-field>
+
         <mat-label>PRODUCTION COST</mat-label>
-        <input matInput placeholder="Production Cost" formControlName="production_cost">
+
+        <input
+            matInput
+            type="number"
+            placeholder="Production Cost"
+            formControlName="productionCost"
+        >
+
     </mat-form-field>
 
     <!-- TYPE -->
     <mat-form-field>
+
         <mat-label>TYPE</mat-label>
-        <input matInput placeholder="Type" formControlName="type">
+
+        <input
+            matInput
+            placeholder="Type"
+            formControlName="type"
+        >
+
     </mat-form-field>
 
     <!-- UNIT MEASURE -->
     <mat-form-field>
+
         <mat-label>UNIT MEASURE</mat-label>
-        <input matInput placeholder="Unit Measure" formControlName="unit_measure">
+
+        <input
+            matInput
+            placeholder="Unit Measure"
+            formControlName="unitMeasure"
+        >
+
     </mat-form-field>
 
     <!-- CATEGORY -->
     <mat-form-field>
-        <mat-label>CATEGORY ID</mat-label>
-        <input matInput placeholder="Category ID" formControlName="id_category">
+
+        <mat-label>CATEGORY</mat-label>
+
+        <mat-select
+            formControlName="category"
+            [compareWith]="compareCategories"
+        >
+
+            @for (c of $categories(); track c.idCategory) {
+
+                <mat-option [value]="c">
+
+                    {{c.name}}
+
+                </mat-option>
+
+            }
+
+        </mat-select>
+
     </mat-form-field>
 
     <!-- STATUS -->
-    <mat-form-field>
-        <mat-label>STATUS</mat-label>
-        <input matInput placeholder="Status" formControlName="status">
-    </mat-form-field>
+    <mat-checkbox formControlName="status">
 
-    <!-- BOTONES -->
-    <button mat-flat-button type="submit">
-        <span>OK</span>
-        <mat-icon>done</mat-icon>
-    </button>
+        Active
 
-    <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/product">
-        <span>Cancel</span>
-        <mat-icon>cancel</mat-icon>
-    </button>
+    </mat-checkbox>
+
+    <!-- BUTTONS -->
+    <div>
+
+        <button mat-flat-button type="submit">
+
+            <span>OK</span>
+            <mat-icon>done</mat-icon>
+
+        </button>
+
+        <button
+            mat-flat-button
+            type="button"
+            class="cancel-button"
+            routerLink="/pages/product"
+        >
+
+            <span>Cancel</span>
+            <mat-icon>cancel</mat-icon>
+
+        </button>
+
+    </div>
 
 </form>

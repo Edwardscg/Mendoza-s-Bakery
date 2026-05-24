@@ -1,21 +1,200 @@
-<h1>Products</h1>
+<router-outlet></router-outlet>
 
-<ul>
-  @for (product of products; track $index) {
+<mat-form-field>
+  <mat-label>Filter</mat-label>
 
-    <li class="elemento">
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Ex. Bread"
+    #input
+  >
+</mat-form-field>
 
-      ID: {{product.id_product}} -
-      Nombre: {{product.name}} -
-      Descripción: {{product.description}} -
-      Precio Venta: {{product.sale_price}} -
-      Costo Producción: {{product.production_cost}} -
-      Tipo: {{product.type}} -
-      Unidad: {{product.unit_measure}} -
-      Estado: {{product.status}} -
-      Categoría: {{product.id_category}}
+<div class="mat-elevation-z8">
 
-    </li>
+  <table mat-table [dataSource]="$dataSource()" matSort>
 
-  }
-</ul>
+    <!-- ID -->
+    <ng-container matColumnDef="idProduct">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        ID
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.idProduct}}
+      </td>
+
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Name
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.name}}
+      </td>
+
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Description
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.description}}
+      </td>
+
+    </ng-container>
+
+    <!-- Sale Price -->
+    <ng-container matColumnDef="salePrice">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Sale Price
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.salePrice}}
+      </td>
+
+    </ng-container>
+
+    <!-- Production Cost -->
+    <ng-container matColumnDef="productionCost">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Production Cost
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.productionCost}}
+      </td>
+
+    </ng-container>
+
+    <!-- Type -->
+    <ng-container matColumnDef="type">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Type
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.type}}
+      </td>
+
+    </ng-container>
+
+    <!-- Unit Measure -->
+    <ng-container matColumnDef="unitMeasure">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Unit Measure
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.unitMeasure}}
+      </td>
+
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Status
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.status ? 'Active' : 'Inactive'}}
+      </td>
+
+    </ng-container>
+
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Category
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.category?.name}}
+      </td>
+
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+
+      <th mat-header-cell *matHeaderCellDef>
+        Actions
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+
+        <button
+          mat-flat-button
+          color="primary"
+          [routerLink]="['edit', row.idProduct]"
+        >
+          <span>Edit</span>
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-flat-button
+          color="warn"
+          class="cancel-button"
+          (click)="delete(row.idProduct)"
+        >
+          <span>Delete</span>
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+
+    </ng-container>
+
+    <!-- HEADER -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- ROW -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- NO DATA -->
+    <tr class="mat-row" *matNoDataRow>
+
+      <td class="mat-cell" colspan="10">
+
+        No data matching the filter "{{input.value}}"
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  <!-- PAGINATOR -->
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+  <!-- ADD BUTTON -->
+  <button
+    mat-fab
+    style="float: right;"
+    routerLink="/pages/product/new"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>

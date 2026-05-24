@@ -1,13 +1,23 @@
+import { ProductCategory } from "./productCategory";
+
 export class Product {
 
-    id_product: number;
+    idProduct: number;
+
     name: string;
+
     description: string;
-    sale_price: number;
-    production_cost: number;
+
+    salePrice: number;
+
+    productionCost: number;
+
     type: string;
-    unit_measure: string;
+
+    unitMeasure: string;
+
     status: boolean;
-    id_category: number;
+
+    category: ProductCategory;
 
 }
