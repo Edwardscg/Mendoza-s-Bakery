@@ -5,10 +5,12 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { EmployeeEditComponent } from './pages/employee/employee-edit/employee-edit.component';
 import { ProductCategoryComponent } from './pages/product-category/product-category.component';
 import { ProductcategoryEditComponent } from './pages/product-category/productcategory-edit/productcategory-edit.component';
+import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
   { path: `pages/customer`, component: CustomerComponent },
   { path: `pages/supplier`, component: SupplierComponent },
+  { path: 'pages/product', component: ProductComponent },
   {
     path: 'pages/employee',
     component: EmployeeComponent,

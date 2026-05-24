@@ -62,11 +62,20 @@
         <span>Supplier</span>
       </button>
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/tag" >
-        <mat-icon>assignment</mat-icon>
-        <span>Tag</span>
+      <button class="myButton" mat-menu-item [matMenuTriggerFor]="productMenu">
+        <mat-icon>inventory_2</mat-icon>
+        <span>Product</span>
       </button>
+      <mat-menu #productMenu="matMenu">
+        <button mat-menu-item routerLink="/pages/product" (click)="sidenav.toggle()">
+          <mat-icon>inventory_2</mat-icon>
+          <span>Product</span>
+        </button>
+        <button mat-menu-item routerLink="/pages/product-category" (click)="sidenav.toggle()">
+          <mat-icon>category</mat-icon>
+          <span>Product Category</span>
+        </button>
+      </mat-menu>
       <mat-divider></mat-divider>
       <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
               routerLink="/pages/company">
