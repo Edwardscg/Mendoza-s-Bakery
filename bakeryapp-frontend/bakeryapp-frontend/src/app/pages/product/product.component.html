@@ -1,1 +1,21 @@
-<p>product works!</p>
+<h1>Products</h1>
+
+<ul>
+  @for (product of products; track $index) {
+
+    <li class="elemento">
+
+      ID: {{product.id_product}} -
+      Nombre: {{product.name}} -
+      Descripción: {{product.description}} -
+      Precio Venta: {{product.sale_price}} -
+      Costo Producción: {{product.production_cost}} -
+      Tipo: {{product.type}} -
+      Unidad: {{product.unit_measure}} -
+      Estado: {{product.status}} -
+      Categoría: {{product.id_category}}
+
+    </li>
+
+  }
+</ul>
