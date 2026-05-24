@@ -1,0 +1,70 @@
+<form [formGroup]="$form()" (ngSubmit)="operate()" class="example-container">
+
+    <!-- ID oculto -->
+    <div hidden>
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="ID" formControlName="id_product">
+        </mat-form-field>
+    </div>
+
+    <!-- NAME -->
+    <mat-form-field>
+        <mat-label>NAME</mat-label>
+        <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <!-- DESCRIPTION -->
+    <mat-form-field>
+        <mat-label>DESCRIPTION</mat-label>
+        <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+
+    <!-- SALE PRICE -->
+    <mat-form-field>
+        <mat-label>SALE PRICE</mat-label>
+        <input matInput placeholder="Sale Price" formControlName="sale_price">
+    </mat-form-field>
+
+    <!-- PRODUCTION COST -->
+    <mat-form-field>
+        <mat-label>PRODUCTION COST</mat-label>
+        <input matInput placeholder="Production Cost" formControlName="production_cost">
+    </mat-form-field>
+
+    <!-- TYPE -->
+    <mat-form-field>
+        <mat-label>TYPE</mat-label>
+        <input matInput placeholder="Type" formControlName="type">
+    </mat-form-field>
+
+    <!-- UNIT MEASURE -->
+    <mat-form-field>
+        <mat-label>UNIT MEASURE</mat-label>
+        <input matInput placeholder="Unit Measure" formControlName="unit_measure">
+    </mat-form-field>
+
+    <!-- CATEGORY -->
+    <mat-form-field>
+        <mat-label>CATEGORY ID</mat-label>
+        <input matInput placeholder="Category ID" formControlName="id_category">
+    </mat-form-field>
+
+    <!-- STATUS -->
+    <mat-form-field>
+        <mat-label>STATUS</mat-label>
+        <input matInput placeholder="Status" formControlName="status">
+    </mat-form-field>
+
+    <!-- BOTONES -->
+    <button mat-flat-button type="submit">
+        <span>OK</span>
+        <mat-icon>done</mat-icon>
+    </button>
+
+    <button mat-flat-button type="button" class="cancel-button" routerLink="/pages/product">
+        <span>Cancel</span>
+        <mat-icon>cancel</mat-icon>
+    </button>
+
+</form>
