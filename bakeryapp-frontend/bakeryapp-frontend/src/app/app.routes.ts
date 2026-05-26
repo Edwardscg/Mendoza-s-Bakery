@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { CustomerComponent } from './pages/customer/customer.component';
 
 import { SupplierComponent } from './pages/supplier/supplier.component';
+import { CustomerEditComponent } from './pages/customer/customer-edit/customer-edit.component';
 
 import { EmployeeComponent } from './pages/employee/employee.component';
 
