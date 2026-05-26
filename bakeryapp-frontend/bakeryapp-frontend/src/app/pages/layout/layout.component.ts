@@ -4,8 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { MatBadgeModule } from '@angular/material/badge';
+import { RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSidenavModule,
     MatDividerModule,
     MatMenuModule,
+    RouterLink, 
     RouterLinkActive,
     RouterOutlet,
     RouterLink

@@ -1,16 +1,14 @@
 <router-outlet></router-outlet>
 
 <mat-form-field>
-
   <mat-label>Filter</mat-label>
 
   <input
     matInput
     (keyup)="applyFilter($event)"
-    placeholder="Ex. Bakery"
+    placeholder="Ex. Bread"
     #input
   >
-
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -18,19 +16,19 @@
   <table mat-table [dataSource]="$dataSource()" matSort>
 
     <!-- ID -->
-    <ng-container matColumnDef="idCategory">
+    <ng-container matColumnDef="idProduct">
 
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         ID
       </th>
 
       <td mat-cell *matCellDef="let row">
-        {{row.idCategory}}
+        {{row.idProduct}}
       </td>
 
     </ng-container>
 
-    <!-- NAME -->
+    <!-- Name -->
     <ng-container matColumnDef="name">
 
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -43,7 +41,7 @@
 
     </ng-container>
 
-    <!-- DESCRIPTION -->
+    <!-- Description -->
     <ng-container matColumnDef="description">
 
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -56,7 +54,59 @@
 
     </ng-container>
 
-    <!-- STATUS -->
+    <!-- Sale Price -->
+    <ng-container matColumnDef="salePrice">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Sale Price
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.salePrice}}
+      </td>
+
+    </ng-container>
+
+    <!-- Production Cost -->
+    <ng-container matColumnDef="productionCost">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Production Cost
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.productionCost}}
+      </td>
+
+    </ng-container>
+
+    <!-- Type -->
+    <ng-container matColumnDef="type">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Type
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.type}}
+      </td>
+
+    </ng-container>
+
+    <!-- Unit Measure -->
+    <ng-container matColumnDef="unitMeasure">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Unit Measure
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.unitMeasure}}
+      </td>
+
+    </ng-container>
+
+    <!-- Status -->
     <ng-container matColumnDef="status">
 
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -64,14 +114,25 @@
       </th>
 
       <td mat-cell *matCellDef="let row">
-
         {{row.status ? 'Active' : 'Inactive'}}
-
       </td>
 
     </ng-container>
 
-    <!-- ACTIONS -->
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Category
+      </th>
+
+      <td mat-cell *matCellDef="let row">
+        {{row.category?.name}}
+      </td>
+
+    </ng-container>
+
+    <!-- Actions -->
     <ng-container matColumnDef="actions">
 
       <th mat-header-cell *matHeaderCellDef>
@@ -83,23 +144,20 @@
         <button
           mat-flat-button
           color="primary"
-          [routerLink]="['edit', row.idCategory]"
+          [routerLink]="['edit', row.idProduct]"
         >
-
           <span>Edit</span>
           <mat-icon>edit</mat-icon>
-
         </button>
 
         <button
           mat-flat-button
           color="warn"
-          (click)="delete(row.idCategory)"
+          class="cancel-button"
+          (click)="delete(row.idProduct)"
         >
-
           <span>Delete</span>
           <mat-icon>delete</mat-icon>
-
         </button>
 
       </td>
@@ -109,13 +167,13 @@
     <!-- HEADER -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-    <!-- ROWS -->
+    <!-- ROW -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     <!-- NO DATA -->
     <tr class="mat-row" *matNoDataRow>
 
-      <td class="mat-cell" colspan="5">
+      <td class="mat-cell" colspan="10">
 
         No data matching the filter "{{input.value}}"
 
@@ -134,11 +192,9 @@
   <button
     mat-fab
     style="float: right;"
-    routerLink="/pages/product-category/new"
+    routerLink="/pages/product/new"
   >
-
     <mat-icon>add</mat-icon>
-
   </button>
 
 </div>

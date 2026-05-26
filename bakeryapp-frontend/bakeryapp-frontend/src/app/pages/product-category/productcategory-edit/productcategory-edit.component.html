@@ -1,0 +1,77 @@
+<form [formGroup]="$form()" (ngSubmit)="operate()" class="example-container">
+
+  <!-- ID -->
+  <div hidden>
+
+    <mat-form-field>
+
+      <mat-label>ID</mat-label>
+
+      <input
+        matInput
+        placeholder="ID"
+        formControlName="idCategory"
+      />
+
+    </mat-form-field>
+
+  </div>
+
+  <!-- NAME -->
+  <mat-form-field>
+
+    <mat-label>Category Name</mat-label>
+
+    <input
+      matInput
+      placeholder="Category Name"
+      formControlName="name"
+    />
+
+  </mat-form-field>
+
+  <!-- DESCRIPTION -->
+  <mat-form-field>
+
+    <mat-label>Description</mat-label>
+
+    <input
+      matInput
+      placeholder="Description"
+      formControlName="description"
+    />
+
+  </mat-form-field>
+
+  <!-- STATUS -->
+  <mat-checkbox formControlName="status">
+
+    Active
+
+  </mat-checkbox>
+
+  <!-- BUTTONS -->
+  <div>
+
+    <button mat-flat-button type="submit">
+
+      <span>OK</span>
+      <mat-icon>done</mat-icon>
+
+    </button>
+
+    <button
+      mat-flat-button
+      type="button"
+      class="cancel-button"
+      routerLink="/pages/product-category"
+    >
+
+      <span>Cancel</span>
+      <mat-icon>cancel</mat-icon>
+
+    </button>
+
+  </div>
+
+</form>

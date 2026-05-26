@@ -1,90 +1,240 @@
 <div class="example-container">
+
+  <!-- TOOLBAR -->
   <mat-toolbar class="example-toolbar">
+
     <button mat-icon-button (click)="sidenav.toggle()">
+
       @if (!sidenav.opened) {
-      <mat-icon>menu</mat-icon>
-      }@else {
-      <mat-icon>close</mat-icon>
+
+        <mat-icon>menu</mat-icon>
+
+      } @else {
+
+        <mat-icon>close</mat-icon>
+
       }
+
     </button>
 
     <span>Capibara's App</span>
 
     <span class="example-spacer"></span>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <!-- USER MENU -->
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+    >
+
       <mat-icon>more_vert</mat-icon>
+
     </button>
 
     <mat-menu #menu="matMenu">
+
       <button mat-menu-item>
+
         <mat-icon>account_box</mat-icon>
         <span>My account</span>
+
       </button>
-      <button mat-menu-item (click)="sidenav.opened = false" >
+
+      <button
+        mat-menu-item
+        (click)="sidenav.opened = false"
+      >
+
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
+
       </button>
+
     </mat-menu>
+
   </mat-toolbar>
 
+  <!-- SIDENAV CONTAINER -->
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #sidenav style="width: 250px" mode="push">
 
-      <img src="carpincho.png" width="128" style="margin-left: 20px">
+    <mat-sidenav
+      #sidenav
+      style="width: 250px"
+      mode="push"
+    >
+
+      <!-- LOGO -->
+      <img
+        src="carpincho.png"
+        width="128"
+        style="margin-left: 20px"
+      >
 
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/search" >
+
+      <!-- SEARCH -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/search"
+        (click)="sidenav.toggle()"
+      >
+
         <mat-icon>search</mat-icon>
         <span>Search</span>
+
       </button>
+
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/rental" >
+
+      <!-- RENTAL -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/rental"
+        (click)="sidenav.toggle()"
+      >
+
         <mat-icon>view_carousel</mat-icon>
         <span>Register Rental</span>
+
       </button>
+
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/customer" >
+
+      <!-- CUSTOMER -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/customer"
+        (click)="sidenav.toggle()"
+      >
+
         <mat-icon>star_rate</mat-icon>
         <span>Customer</span>
+
       </button>
+
       <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/pages/employee">
-      <mat-icon>badge</mat-icon>
-      <span>Employees</span>
+
+      <!-- EMPLOYEE -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/employee"
+        (click)="sidenav.toggle()"
+      >
+
+        <mat-icon>badge</mat-icon>
+        <span>Employees</span>
+
       </button>
-      <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/supplier" >
+
+      <mat-divider></mat-divider>
+
+      <!-- SUPPLIER -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/supplier"
+        (click)="sidenav.toggle()"
+      >
+
         <mat-icon>healing</mat-icon>
         <span>Supplier</span>
+
       </button>
+
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']" mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/tag" >
-        <mat-icon>assignment</mat-icon>
-        <span>Tag</span>
+
+      <!-- PRODUCT MENU -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [matMenuTriggerFor]="productMenu"
+      >
+
+        <mat-icon>inventory_2</mat-icon>
+        <span>Products</span>
+
       </button>
+
+      <mat-menu #productMenu="matMenu">
+
+        <!-- PRODUCT -->
+        <button
+          mat-menu-item
+          routerLink="/pages/product"
+          (click)="sidenav.toggle()"
+        >
+
+          <mat-icon>inventory_2</mat-icon>
+          <span>Product</span>
+
+        </button>
+
+        <!-- PRODUCT CATEGORY -->
+        <button
+          mat-menu-item
+          routerLink="/pages/product-category"
+          (click)="sidenav.toggle()"
+        >
+
+          <mat-icon>category</mat-icon>
+          <span>Product Category</span>
+
+        </button>
+
+      </mat-menu>
+
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/company">
-        <mat-icon>accessibility</mat-icon>
+
+      <!-- COMPANY -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/company"
+        (click)="sidenav.toggle()"
+      >
+
+        <mat-icon>business</mat-icon>
         <span>Company</span>
+
       </button>
+
       <mat-divider></mat-divider>
-      <button class="myButton" [routerLinkActive]="['active']"  mat-menu-item (click)="sidenav.toggle()"
-              routerLink="/pages/report" >
+
+      <!-- REPORT -->
+      <button
+        class="myButton"
+        mat-menu-item
+        [routerLinkActive]="['active']"
+        routerLink="/pages/report"
+        (click)="sidenav.toggle()"
+      >
+
         <mat-icon>assessment</mat-icon>
         <span>Report</span>
+
       </button>
+
       <mat-divider></mat-divider>
+
     </mat-sidenav>
 
+    <!-- CONTENT -->
     <mat-sidenav-content>
+
       <router-outlet></router-outlet>
+
     </mat-sidenav-content>
 
   </mat-sidenav-container>
+
 </div>
