@@ -1,0 +1,57 @@
+<form [formGroup]="$form()" (submit)="operate()" class="example-container" #frmInventory="ngForm">
+
+  <div [hidden]="true">
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput placeholder="ID" formControlName="idInventory">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field>
+    <mat-label>PRODUCT</mat-label>
+
+    <mat-select
+      formControlName="product"
+      [compareWith]="compareProducts">
+
+      @for (prod of $products(); track prod.idProduct) {
+        <mat-option [value]="prod">
+          {{ prod.name }}
+        </mat-option>
+      }
+
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>CURRENT STOCK</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Ex. 100"
+      formControlName="currentStock">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>LAST UPDATE</mat-label>
+    <input
+      matInput
+      type="datetime-local"
+      formControlName="lastUpdate">
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" [disabled]="$form().invalid">
+    <span>OK</span>
+    <mat-icon>done</mat-icon>
+  </button>
+
+  <button
+    mat-flat-button
+    type="button"
+    class="cancel-button"
+    routerLink="/pages/inventory">
+    <span>Cancel</span>
+    <mat-icon>cancel</mat-icon>
+  </button>
+
+</form>
