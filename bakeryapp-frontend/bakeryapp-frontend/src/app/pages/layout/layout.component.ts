@@ -7,9 +7,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterLinkActive, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-layout',
+  standalone: true,
   imports: [
     MatButtonModule,
     MatToolbarModule,
@@ -17,10 +19,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatSidenavModule,
     MatDividerModule,
     MatMenuModule,
-    RouterLink, 
-    RouterLinkActive,
+    RouterLink,
     RouterOutlet,
-    RouterLink
+    MatCardModule
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',

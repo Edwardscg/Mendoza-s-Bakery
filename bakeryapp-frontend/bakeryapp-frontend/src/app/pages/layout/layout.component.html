@@ -1,235 +1,131 @@
-<div class="example-container">
+<div class="layout">
 
-  <!-- TOOLBAR -->
-  <mat-toolbar class="example-toolbar">
+  <!-- TOP BAR -->
+  <mat-toolbar class="topbar">
 
     <button mat-icon-button (click)="sidenav.toggle()">
-
-      @if (!sidenav.opened) {
-
-        <mat-icon>menu</mat-icon>
-
-      } @else {
-
-        <mat-icon>close</mat-icon>
-
-      }
-
+      <mat-icon>{{ sidenav.opened ? 'close' : 'menu' }}</mat-icon>
     </button>
 
-    <span>Capibara's App</span>
+    <span class="title">Capibara ERP</span>
 
-    <span class="example-spacer"></span>
+    <span class="spacer"></span>
 
-    <!-- USER MENU -->
-    <button
-      mat-icon-button
-      [matMenuTriggerFor]="menu"
-    >
-
-      <mat-icon>more_vert</mat-icon>
-
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu">
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        Profile
+      </button>
 
       <button mat-menu-item>
-
-        <mat-icon>account_box</mat-icon>
-        <span>My account</span>
-
+        <mat-icon>logout</mat-icon>
+        Logout
       </button>
-
-      <button
-        mat-menu-item
-        (click)="sidenav.opened = false"
-      >
-
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-
-      </button>
-
     </mat-menu>
 
   </mat-toolbar>
 
-  <!-- SIDENAV CONTAINER -->
-  <mat-sidenav-container class="example-sidenav-container">
+  <!-- SIDENAV -->
+  <mat-sidenav-container class="container">
 
-    <mat-sidenav
-      #sidenav
-      style="width: 250px"
-      mode="push"
-    >
+    <mat-sidenav #sidenav mode="side" class="sidenav" opened>
 
-      <!-- LOGO -->
-      <img
-        src="carpincho.png"
-        width="128"
-        style="margin-left: 20px"
-      >
+      <div class="logo">
+        <img src="carpincho.png" />
+        <h3>ERP System</h3>
+      </div>
 
       <mat-divider></mat-divider>
 
-      <!-- SEARCH -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/search"
-        (click)="sidenav.toggle()"
-      >
-
-        <mat-icon>search</mat-icon>
-        <span>Search</span>
-
+      <!-- DASHBOARD -->
+      <button mat-menu-item routerLink="/pages/dashboard" (click)="sidenav.close()">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
       </button>
 
       <mat-divider></mat-divider>
 
-      <!-- RENTAL -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/rental"
-        (click)="sidenav.toggle()"
-      >
+      <!-- BUSINESS MODULE -->
+      <div class="section-title">Business</div>
 
-        <mat-icon>view_carousel</mat-icon>
-        <span>Register Rental</span>
-
+      <button mat-menu-item routerLink="/pages/customer" (click)="sidenav.close()">
+        <mat-icon>people</mat-icon>
+        Customers
       </button>
 
-      <mat-divider></mat-divider>
-
-      <!-- CUSTOMER -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/customer"
-        (click)="sidenav.toggle()"
-      >
-
-        <mat-icon>star_rate</mat-icon>
-        <span>Customer</span>
-
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <!-- EMPLOYEE -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/employee"
-        (click)="sidenav.toggle()"
-      >
-
+      <button mat-menu-item routerLink="/pages/employee" (click)="sidenav.close()">
         <mat-icon>badge</mat-icon>
-        <span>Employees</span>
+        Employees
+      </button>
 
+      <button mat-menu-item routerLink="/pages/supplier" (click)="sidenav.close()">
+        <mat-icon>local_shipping</mat-icon>
+        Suppliers
       </button>
 
       <mat-divider></mat-divider>
 
-      <!-- SUPPLIER -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/supplier"
-        (click)="sidenav.toggle()"
-      >
+      <!-- INVENTORY -->
+      <div class="section-title">Inventory</div>
 
-        <mat-icon>healing</mat-icon>
-        <span>Supplier</span>
-
-      </button>
-
-      <mat-divider></mat-divider>
-
-      <!-- PRODUCT MENU -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [matMenuTriggerFor]="productMenu"
-      >
-
+      <button mat-menu-item routerLink="/pages/product" (click)="sidenav.close()">
         <mat-icon>inventory_2</mat-icon>
-        <span>Products</span>
-
+        Products
       </button>
 
-      <mat-menu #productMenu="matMenu">
-
-        <!-- PRODUCT -->
-        <button
-          mat-menu-item
-          routerLink="/pages/product"
-          (click)="sidenav.toggle()"
-        >
-
-          <mat-icon>inventory_2</mat-icon>
-          <span>Product</span>
-
-        </button>
-
-        <!-- PRODUCT CATEGORY -->
-        <button
-          mat-menu-item
-          routerLink="/pages/product-category"
-          (click)="sidenav.toggle()"
-        >
-
-          <mat-icon>category</mat-icon>
-          <span>Product Category</span>
-
-        </button>
-
-      </mat-menu>
-
-      <mat-divider></mat-divider>
-
-      <!-- COMPANY -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/company"
-        (click)="sidenav.toggle()"
-      >
-
-        <mat-icon>business</mat-icon>
-        <span>Company</span>
-
+      <button mat-menu-item routerLink="/pages/product-category" (click)="sidenav.close()">
+        <mat-icon>category</mat-icon>
+        Product Categories
       </button>
 
       <mat-divider></mat-divider>
 
-      <!-- REPORT -->
-      <button
-        class="myButton"
-        mat-menu-item
-        [routerLinkActive]="['active']"
-        routerLink="/pages/report"
-        (click)="sidenav.toggle()"
-      >
+      <!-- RECIPES -->
+      <div class="section-title">Production</div>
 
-        <mat-icon>assessment</mat-icon>
-        <span>Report</span>
+      <button mat-menu-item routerLink="/pages/recipe" (click)="sidenav.close()">
+        <mat-icon>restaurant_menu</mat-icon>
+        Recipes
+      </button>
 
+      <button mat-menu-item routerLink="/pages/recipe-production" (click)="sidenav.close()">
+        <mat-icon>factory</mat-icon>
+        Recipe Production
       </button>
 
       <mat-divider></mat-divider>
+
+      <!-- SALES -->
+      <div class="section-title">Sales</div>
+
+      <button mat-menu-item routerLink="/pages/sales" (click)="sidenav.close()">
+        <mat-icon>point_of_sale</mat-icon>
+        Sales
+      </button>
+
+      <button mat-menu-item routerLink="/pages/purchases" (click)="sidenav.close()">
+        <mat-icon>shopping_cart</mat-icon>
+        Purchases
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <!-- REPORTS -->
+      <div class="section-title">Reports</div>
+
+      <button mat-menu-item routerLink="/pages/report" (click)="sidenav.close()">
+        <mat-icon>analytics</mat-icon>
+        Reports
+      </button>
 
     </mat-sidenav>
 
     <!-- CONTENT -->
-    <mat-sidenav-content>
+    <mat-sidenav-content class="content">
 
       <router-outlet></router-outlet>
 
