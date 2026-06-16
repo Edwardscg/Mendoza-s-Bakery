@@ -1,10 +1,38 @@
-h1{
-  color: blueviolet;
-  font-family: 'Courier New', Courier, monospace;
+.page {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.elemento{
-  color: green;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.table-card {
+  padding: 15px;
+}
+
+.filter {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.status.active {
+  background: #e6f4ea;
+  color: #1e8e3e;
+}
+
+.status.inactive {
+  background: #fce8e6;
+  color: #c5221f;
 }
