@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { switchMap, tap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerDialogComponent } from './customer-dialog/customer-dialog.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-customer',
@@ -19,21 +22,35 @@ import { switchMap, tap } from 'rxjs';
     MatTableModule,
     MatInputModule,
     MatIconModule,
-    RouterLink,
+
     MatPaginatorModule,
     MatButtonModule,
     MatSortModule,
-    RouterOutlet,
+
     MatSnackBarModule,
+    MatCardModule
   ],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
 })
 export class CustomerComponent {
-
   private readonly customerService = inject(CustomerService);
   private readonly snackBar = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
 
+  openDialog(customer?: Customer) {
+    this.dialog
+      .open(CustomerDialogComponent, {
+        width: '500px',
+        data: customer || null,
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.customerService
+          .findAll()
+          .subscribe((data) => this.customerService.setCustomerChange(data));
+      });
+  }
   // ngOnInit(): void {
   //   this.customerService.findAll().subscribe((data) => {
   //     console.log('Datos recibidos del backend:', data);
@@ -51,7 +68,15 @@ export class CustomerComponent {
   //Enlaza con el signal del service para que cada vez que haya un cambio en los pacientes, se actualice la tabla
   //protected $categories = this.patientService.$patientsChange;
   protected $customers = this.customerService.$customersChange;
-  protected displayedColumns: string[] = ['idCustomer', 'nameCustomer', 'dni', 'phone', 'email', 'status', 'actions'];
+  protected displayedColumns: string[] = [
+    'idCustomer',
+    'nameCustomer',
+    'dni',
+    'phone',
+    'email',
+    'status',
+    'actions',
+  ];
 
   //Esta esuchando los signals de categoria, paginador y sort para actualizar la tabla cada vez que haya un cambio
   constructor() {

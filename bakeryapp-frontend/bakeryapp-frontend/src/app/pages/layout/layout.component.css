@@ -1,29 +1,79 @@
-.example-container {
+.layout {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
-.example-sidenav-container {
+/* TOP BAR */
+.topbar {
+  background: #1e1e2f;
+  color: white;
+}
+
+.title {
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.spacer {
   flex: 1;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+/* CONTAINER */
+.container {
+  flex: 1;
 }
 
+/* SIDENAV */
+.sidenav {
+  width: 260px;
+  background: #f7f7f9;
+  padding: 10px 0;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+}
+
+.logo img {
+  width: 60px;
+}
+
+.logo h3 {
+  margin: 5px 0 0;
+}
+
+/* SECTION TITLES */
+.section-title {
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777;
+  text-transform: uppercase;
+}
+
+/* BUTTONS */
+mat-sidenav button[mat-menu-item] {
+  margin: 2px 10px;
+  border-radius: 8px;
+}
+
+mat-sidenav button[mat-menu-item]:hover {
+  background: #e8e8ff;
+}
+
+/* CONTENT */
+.content {
+  padding: 20px;
+  background: #f3f4f6;
+}
+
+/* ACTIVE LINK */
 .active {
-  background-color: #dcdcdcc1;
-}
-
-
-.myButton:focus{
-  box-shadow: 0 0 rgba(255, 255, 255, 1) !important;
-  transition:none !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  -webkit-tap-highlight-color:rgba(255, 255, 255, 1) !important;
+  background: #dce3ff !important;
+  border-left: 4px solid #3f51b5;
 }
