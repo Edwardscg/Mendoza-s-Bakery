@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>
+  {{ data ? 'Edit Product' : 'New Product' }}
+</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sale Price</mat-label>
+      <input matInput type="number" formControlName="salePrice">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Production Cost</mat-label>
+      <input matInput type="number" formControlName="productionCost">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Unit Measure</mat-label>
+      <input matInput formControlName="unitMeasure">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    Cancel
+  </button>
+
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="save()"
+    [disabled]="form.invalid"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
