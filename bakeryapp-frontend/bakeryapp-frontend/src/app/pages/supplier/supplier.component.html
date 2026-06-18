@@ -1,7 +1,86 @@
+<div class="page">
 
-<h1>Suppliers</h1>
-<ul>
-  @for (supplier of suppliers; track $index){
-    <li class="elemento">ID: {{supplier.idSupplier}} - Nombre: {{supplier.businessName}} - RUC: {{supplier.ruc}}</li>
-  }
-</ul>
+  <mat-card class="header">
+    <h2>Suppliers</h2>
+
+    <button mat-flat-button color="primary" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+      New Supplier
+    </button>
+  </mat-card>
+
+  <mat-card class="table-card">
+
+    <mat-form-field appearance="outline" class="filter">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="$dataSource()" matSort>
+
+      <ng-container matColumnDef="idSupplier">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let row">#{{row.idSupplier}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="businessName">
+        <th mat-header-cell *matHeaderCellDef>Business Name</th>
+        <td mat-cell *matCellDef="let row">{{row.businessName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ruc">
+        <th mat-header-cell *matHeaderCellDef>RUC</th>
+        <td mat-cell *matCellDef="let row">{{row.ruc}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let row">{{row.phone}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let row">{{row.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let row">{{row.address}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="status" [class.active]="row.status" [class.inactive]="!row.status">
+            {{ row.status ? 'Active' : 'Inactive' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+        <td mat-cell *matCellDef="let row">
+
+          <button mat-icon-button color="primary" (click)="openDialog(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="delete(row.idSupplier)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,25]"></mat-paginator>
+
+  </mat-card>
+
+</div>

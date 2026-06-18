@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>
+  {{ data ? 'Edit Supplier' : 'New Supplier' }}
+</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Business Name</mat-label>
+      <input matInput formControlName="businessName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>RUC</mat-label>
+      <input matInput formControlName="ruc">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option [value]="true">Active</mat-option>
+        <mat-option [value]="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
