@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+<<<<<<< HEAD
 import { InventoryComponent } from './pages/inventory/inventory.component';
 import { CustomerComponent } from './pages/customer/customer.component';
 
@@ -26,42 +27,18 @@ export const routes: Routes =
 [
   { path: 'pages/customer', component: CustomerComponent },
 
-  {
-    path: 'pages/customer',
-    component: CustomerComponent,
-    children: [
-      { path: 'new', component: CustomerEditComponent },
-      { path: 'edit/:id', component: CustomerEditComponent },
-    ],
-  },
+=======
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
-  { path: 'pages/supplier', component: SupplierComponent },
-
+export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+>>>>>>> develop
   {
-    path: 'pages/employee',
-    component: EmployeeComponent,
-    children: [
-      { path: 'new', component: EmployeeEditComponent },
-      { path: 'edit/:id', component: EmployeeEditComponent },
-    ],
-  },
-
-  {
-    path: 'pages/product',
-    component: ProductComponent,
-    children: [
-      { path: 'new', component: ProductEditComponent },
-      { path: 'edit/:id', component: ProductEditComponent },
-    ],
-  },
-
-  {
-    path: 'pages/product-category',
-    component: ProductCategoryComponent,
-    children: [
-      { path: 'new', component: ProductcategoryEditComponent },
-      { path: 'edit/:id', component: ProductcategoryEditComponent },
-    ],
+    path: 'pages',
+    component: LayoutComponent,
+    loadChildren: () => import('./pages/pages.routes').then((m) => m.pagesRoutes),
   },
   {
   path: 'pages/inventory',
